@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS activity_logs(
-    activity_log_id AUTO INCREMENT PRIMARY KEY,
+    activity_log_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id VARCHAR(255),
     user_email VARCHAR(255),
     activity_log_action VARCHAR(50) NOT NULL,
@@ -11,4 +11,4 @@ CREATE TABLE IF NOT EXISTS activity_logs(
 
     -- Timestamp
     activity_log_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
+);
