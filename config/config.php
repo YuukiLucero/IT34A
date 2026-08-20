@@ -1,12 +1,13 @@
 <?php
 session_start();
-require_once('../includes/activity.logger.php');
+
+require_once('__DIR__ . '/../includes/activity-logger.php');
 
 // define('','');
 define('BASE_URL', 'http://localhost/it34a');
 
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'lab_db');
+define('DB_NAME', 'it34_lab_db');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
@@ -19,8 +20,8 @@ try {
     );
     echo "Database connection successful!";
 
-    //echo ("connection successful");
-    //logActivity($pdo, $user_id, $email, 'connect_db' 'success');
+    echo ("connection successful");
+    logActivity($pdo, $user_id, $email, 'connect_db' 'success');
 
 } catch (PDOException $e) {
     die("Database connection failed: " . $e->getMessage());
