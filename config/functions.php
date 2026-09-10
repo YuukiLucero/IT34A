@@ -14,7 +14,7 @@ $sql = "
         user_username,
         user_password,
         user_role
-    FROM users
+    FROM user
     WHERE user_email = :login
        OR user_username = :login
     LIMIT 1

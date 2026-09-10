@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS activity_logs(
     user_id VARCHAR(255),
     user_email VARCHAR(255),
     activity_log_action VARCHAR(50) NOT NULL,
-    activity_log_status ENUM('success','failed') DEFAULT 'SUCCESS',
+    activity_log_status ENUM('SUCCESS','FAILED') DEFAULT 'SUCCESS',
 
     -- Client Parameters
     activity_log_ip_address VARCHAR(45),
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS activity_logs(
 );
 
 -- Table #3 users table
-CREATE TABLE IF NOT EXISTS users(
+CREATE TABLE IF NOT EXISTS user(
 
     -- Primary Key for users table
     user_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -26,18 +26,18 @@ CREATE TABLE IF NOT EXISTS users(
     user_role ENUM('admin','manager','user') NOT NULL DEFAULT 'user',
 
     -- User Created Timestamp default not null
-    user_created_at TIMESTAMP 
-       DEFAULT CURRENT_TIMESTAMP
+       user_created_at TIMESTAMP 
+       DEFAULT CURRENT_TIMESTAMP,
 
     -- User Updated timestamp
-    user_updated_at TIMESTAMP 
-       DEFAULT CURRENT_TIMESTAMP 
+       user_updated_at TIMESTAMP
+       DEFAULT CURRENT_TIMESTAMP
        ON UPDATE CURRENT_TIMESTAMP
 );
 
 --test users
 
-INSERT INTO users
+INSERT INTO user
 (
     user_email,
     user_username,
