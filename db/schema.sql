@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS user(
        ON UPDATE CURRENT_TIMESTAMP
 );
 
---test users
+-- test users
 
 INSERT INTO user
 (
