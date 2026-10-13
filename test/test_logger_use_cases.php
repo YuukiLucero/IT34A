@@ -17,7 +17,7 @@ $button = [
     'Generate Report',
 ];
 ?>
-<table border="1" cellpadding="10">
+<table border="1" cellpadding="8" align="center">
     <tr>
         <th>Action</th>
         <th>Test</th>

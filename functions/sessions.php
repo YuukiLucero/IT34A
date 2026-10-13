@@ -1,9 +1,9 @@
-<?php
+<?php 
 
 // Start user session
 function startUserSession($pdo){
-
-    if(isset($_SESSION['user_id'])){
+    
+    if(!isset($_SESSION['user_id'])){
         return false;
     }
 
@@ -13,37 +13,30 @@ function startUserSession($pdo){
         INSERT INTO user_sessions(
             user_id,
             session_start
-        )
-        VALUES (
+        ) VALUES (
             :user_id,
             NOW()
         )
+    
     ");
 
     $stmt->execute([
-        'user_id' => $user_id
-        ]);
+        ':user_id' => $user_id
+    ]);
 
     return $pdo->lastInsertId();
-
 }
-
-// End user session
 function endUserSession($pdo){
-    
-    if(!isset($_SESSION['session_id'])){
-        return false;
-    }
 
     $session_id = $_SESSION['session_id'];
 
     $stmt = $pdo->prepare("
         UPDATE user_sessions
-        SET 
-            session_end = NOW(),
+        SET
+            session_end=NOW(),
             session_duration=TIMESTAMPDIFF(
-                SECOND, 
-                session_start, 
+                SECOND,
+                session_start,
                 NOW()
             )
         WHERE session_id = :session_id
@@ -52,5 +45,7 @@ function endUserSession($pdo){
     return $stmt->execute([
         'session_id' => $session_id
     ]);
+
 }
+
 ?>
