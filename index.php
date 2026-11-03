@@ -10,6 +10,8 @@ if(isset($_SESSION['user_id'])){
 $error = '';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+requireCsrfToken();
     $login = trim($_POST['login'] ?? '');
     $password = $_POST['password'] ?? '';
 
@@ -74,7 +76,7 @@ if($login==='' || $password===''){
         <input type = "text"
                 name = "login"
                 required
-    >
+            >
     <br>
     <br>
     <label>Password</label>
