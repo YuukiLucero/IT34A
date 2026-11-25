@@ -64,7 +64,7 @@ if($action == 'export'){
 </head>
 <body>
     <h1>Welcome Admin</h1>
-    <a href="../../auth/signout.php">Sign Out</a>
+    <a href="./../auth/signout.php">Sign Out</a>
 
     <?php if ($section === 'activity-logs'): ?>
         <h4>Activity Logs 
