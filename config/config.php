@@ -1,25 +1,30 @@
 <?php
 session_start();
 require_once(__DIR__ . '/../functions/activity.php');
-require_once(__DIR__ . '/../functions/sessions.php');
 require_once(__DIR__ . '/../functions/auth.php');
 require_once(__DIR__ . '/../functions/redirect.php');
+require_once(__DIR__ . '/../functions/sessions.php');
 require_once(__DIR__ . '/../functions/csrf.php');
 require_once(__DIR__ . '/../functions/csv.php');
 
 
+require_once(__DIR__ . '/../vendor/autoload.php');
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv ->load();
+
+define('DB_HOST', $_ENV['DB_HOST'] ?? '');
+define('DB_NAME', $_ENV['DB_NAME'] ?? '');
+define('DB_USER', $_ENV['DB_USER'] ?? '');
+define('DB_PASS', $_ENV['DB_PASS'] ?? '');
+
 //define('', '');
 
-define('BASE_URL','http://localhost/IT34A_Lucero');
+define('BASE_URL','http://localhost/it34a-1');
 
-define('DB_HOST','localhost');
-define('DB_NAME','it34_lb_db');
-define('DB_USER','root');
-define('DB_PASS','');
 
 $user_id = "root" ?? null;
 $user_email = "root" ?? null;
-
 
 try{
     $pdo = new PDO(
@@ -29,8 +34,8 @@ try{
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
     );
     //echo ("Connection Successful");
-    // echo ($user_id , $user_email , 'connect_db', 'success');
-    // logActivity($pdo,$user_id,$user_email,'connect_db', 'success');
+     //echo ($user_id. $user_email . 'connect_db'. 'success');
+     //logActivity($pdo,$user_id,$user_email,'connect_db', 'success');
 
 }catch(PDOException $e){
     die("Connection failed: " . $e->getMessage());
